@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var url = "https://vrteknikinformatika.000webhostapp.com/appcordova/www/json.php";
+        $.getJSON(url, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var id = field.id;
+                var nama = field.nama;
+                var produsen = field.produsen;
+                var harga = field.harga;
+                var kategori = field.kategori;
+                var jenis = field.jenis;
+                $("#listview").append("<a class='item' href='form.html?id=" + id + "&nama=" + nama + "&produsen=" + produsen + "&harga=" + harga + "&kategori=" + kategori + "&jenis=" + jenis + "'><span class='item-note'>Rp." + harga + "</span><h2>" + nama + " </h2><p>" + produsen + "</p></a>");
+            });
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+        <a href="index.html" class="button button-clear">Beranda</a>
+        <h1 class="title">List Produk UMKM</h1>
+    </div>
+    <br/>
+    <br/>
+    <ul class="list" id="listview">
+    </ul>
+</body>
+
+</html>
